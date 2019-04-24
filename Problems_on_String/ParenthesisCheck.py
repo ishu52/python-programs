@@ -1,4 +1,3 @@
-#code
 class stack:
     def __init__(self):
         self.__lis=['-1']   
@@ -13,18 +12,19 @@ class stack:
             return True
         else:
             return False
-s='{{{{{{}()}}}}'
 
-l=list(s)
-o=stack()
-i=0
-while len(l)!=0:
-    if o.check(o.get(),l[0])==True:
-        o.pop()
+
+T = int(input())
+for _ in range(T):
+    l=list(input())
+    o=stack()
+    while len(l)!=0:
+        if (o.get()=='('and l[0]==')') or (o.get()=='[' and l[0]==']') or (o.get()=='{' and l[0]=='}')==True:
+            o.pop()
+        else:
+            o.push(l[0])
+        l.pop(0)
+    if o.get()=='-1':
+        print("balanced")
     else:
-        o.push(l[0])
-    l.pop(0)
-if o.get()=='-1':
-    print("balanced")
-else:
-    print("unbalanced")
+        print("not balanced")
